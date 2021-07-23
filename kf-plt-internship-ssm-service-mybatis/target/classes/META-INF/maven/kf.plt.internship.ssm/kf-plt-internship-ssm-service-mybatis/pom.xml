@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>kf.plt.internship.ssm</groupId>
+    <artifactId>kf-plt-internship-ssm-service</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  
+  <artifactId>kf-plt-internship-ssm-service-mybatis</artifactId>
+  
+	<dependencies>
+			<dependency>
+			   <groupId>org.mybatis</groupId>
+			   <artifactId>mybatis</artifactId>
+			   <version>3.5.2</version>
+			</dependency>
+		<!--连接mysql数据库-->
+		<dependency>
+		   <groupId>mysql</groupId>
+		   <artifactId>mysql-connector-java</artifactId>
+		   <version>5.1.47</version>
+		</dependency>
+		<!-- lombok -->
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+ 		 </dependency>
+ 		 <!-- junit -->
+ 		 <dependency>
+		     <groupId>junit</groupId>
+		     <artifactId>junit</artifactId>
+		     <version>4.10</version>
+		     <scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<!-- maven在编译阶段不编译一些静态文件的问题 -->
+  	<build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+    
+</project>
