@@ -1,6 +1,8 @@
 package kf.plt.internship.ssm.service.mybatis;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -10,7 +12,8 @@ import kf.plt.internship.ssm.service.mybatis.mapper.UserMapper;
 import kf.plt.internship.ssm.service.mybatis.util.MybatisUtil;
 
 public class MyTest {
-	@Test
+	
+/*	@Test
 	public void selectUser()  {
 		SqlSession session = MybatisUtil.getSession();
 		UserMapper userMapper = session.getMapper(UserMapper.class);
@@ -18,11 +21,10 @@ public class MyTest {
 		for (User user: users){
 	           System.out.println(user);
 	      }
-	}
+	}*/
 	
-	@org.junit.Test
-    public void testSelectUserById() {
-        //获取sqlsession连接
+/*	@org.junit.Test
+    public void testSelectUserById() { 
         SqlSession session = MybatisUtil.getSession();
         UserMapper mapper = session.getMapper(UserMapper.class);
         User user = null;
@@ -30,8 +32,29 @@ public class MyTest {
             user = mapper.selectUserById(i);
             System.out.println(user);
         }
-
         session.close();
     }
+*/
+	@Test
+	public void selectUser()  {
+		SqlSession session = MybatisUtil.getSession();
+		   UserMapper mapper = session.getMapper(UserMapper.class);
+
+		   int currentPage = 1;  //第几页
+		   int pageSize = 2;  //每页显示几个
+		   Map<String,Integer> map = new HashMap<String,Integer>();
+		   map.put("startIndex",(currentPage-1)*pageSize);
+		   map.put("pageSize",pageSize);
+
+		   List<User> users = mapper.selectUserByPage(map);
+
+		   for (User user: users){
+		       System.out.println(user);
+		  }
+
+		   session.close();
+	 }
+	
+
 
 }

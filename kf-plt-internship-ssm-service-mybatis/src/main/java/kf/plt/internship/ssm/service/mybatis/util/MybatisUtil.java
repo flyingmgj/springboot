@@ -28,4 +28,11 @@ public class MybatisUtil {
 		public static SqlSession getSession(){
 		       return sqlSessionFactory.openSession();
 		}
+		
+		//获取SqlSession连接
+		//true事务自动提交
+		//false事务不自动提交 默认false
+		public static SqlSession getSession(boolean flag){
+				       return sqlSessionFactory.openSession(flag);
+		}
 }
